@@ -43,7 +43,7 @@ CREATE TABLE "Pracownik"(
   "Data_urodzenia" Date NOT NULL,
   "PESEL" Char(11 ),
   "Plec" Char(1 )
-        CHECK (--Plec IN ('M', 'K')),
+        CHECK ("Plec" IN ('M', 'K')),
   "Nr_adresu" Integer
 )
 /
@@ -174,16 +174,16 @@ ALTER TABLE "Wypozyczalnia" ADD CONSTRAINT "Nr_wypozyczalni" PRIMARY KEY ("Nr_wy
 CREATE TABLE "Rakieta"(
   "Nr_rakiety" Integer NOT NULL,
   "Typ_gracza" Varchar2(30 )
-        CONSTRAINT "CheckConstraintA1" CHECK (--Typ_gracza IN ('POCZATKUJACY', 'REKREACYJNY', 'KLUBOWY', 'SPORTOWY', 'WYCZYNOWY'))
-        CHECK (--Typ_gracza IN ('POCZATKUJACY', 'REKREACYJNY', 'KLUBOWY', 'SPORTOWY', 'WYCZYNOWY')),
+        CONSTRAINT "CheckConstraintA1" CHECK ("Typ_gracza" IN ('POCZATKUJACY', 'REKREACYJNY', 'KLUBOWY', 'SPORTOWY', 'WYCZYNOWY'))
+        CHECK ("Typ_gracza" IN ('POCZATKUJACY', 'REKREACYJNY', 'KLUBOWY', 'SPORTOWY', 'WYCZYNOWY')),
   "Waga" Integer,
   "Balans" Float(126),
   "Poziom_mocy" Varchar2(30 )
-        CONSTRAINT "CheckConstraintA2" CHECK (--Poziom_mocy IN ('NISKI', 'SREDNI', 'WYSOKI'))
-        CHECK (--Poziom_mocy IN ('NISKI', 'SREDNI', 'WYSOKI')),
+        CONSTRAINT "CheckConstraintA2" CHECK ("Poziom_mocy" IN ('NISKI', 'SREDNI', 'WYSOKI'))
+        CHECK ("Poziom_mocy" IN ('NISKI', 'SREDNI', 'WYSOKI')),
   "Wielkosc_glowki" Varchar2(30 )
-        CONSTRAINT "CheckConstraintA3" CHECK (--Wielkosc_glowki IN ('MID', 'MIDPLUS', 'OVERSIZE'))
-        CHECK (--Wielkosc_glowki IN ('MID', 'MIDPLUS', 'OVERSIZE')),
+        CONSTRAINT "CheckConstraintA3" CHECK ("Wielkosc_glowki" IN ('MID', 'MIDPLUS', 'OVERSIZE'))
+        CHECK ("Wielkosc_glowki" IN ('MID', 'MIDPLUS', 'OVERSIZE')),
   "Nr_wypozyczalni" Integer NOT NULL,
   "Nr_producenta" Integer NOT NULL
 )
