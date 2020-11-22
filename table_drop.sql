@@ -1,0 +1,16 @@
+﻿drop table "Adresy" cascade constraints PURGE;
+drop table "Karty_klubowe" cascade constraints PURGE;
+drop table "Klienci" cascade constraints PURGE;
+drop table "Kluby" cascade constraints PURGE;
+drop table "Korty" cascade constraints PURGE;
+drop table "Licencje" cascade constraints PURGE;
+drop table "Obiekty" cascade constraints PURGE;
+drop table "Pileczki" cascade constraints PURGE;
+drop table "Pracownicy" cascade constraints PURGE;
+drop table "Producenci" cascade constraints PURGE;
+drop table "Rakiety" cascade constraints PURGE;
+drop table "Wynajecia" cascade constraints PURGE;
+drop table "Wypozyczalnie" cascade constraints PURGE;
+drop table "Wypozyczenia_pileczek" cascade constraints PURGE;
+drop table "Wypozyczenia_rakiet" cascade constraints PURGE;
+drop table "Zatrudnienia" cascade constraints PURGE;

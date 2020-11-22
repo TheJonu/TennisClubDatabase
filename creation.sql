@@ -1,6 +1,6 @@
 ﻿/*
 Created: 11.11.2020
-Modified: 17.11.2020
+Modified: 22.11.2020
 Project: Klub Tenisowy
 Model: Model logiczny
 Company: EiTI PW
@@ -94,34 +94,29 @@ COMMENT ON COLUMN "Pracownicy"."Nr_adresu" IS 'Numer adresu'
 
 CREATE TABLE "Licencje"(
   "Nr_licencji" Integer NOT NULL,
+  "Nr_pracownika" Integer NOT NULL,
   "Nazwa_licencji" Varchar2(64 ) NOT NULL,
   "Numer_licencji" Varchar2(64 ) NOT NULL,
-  "Data_wydania_licencji" Date NOT NULL,
-  "Nr_pracownika" Integer NOT NULL
+  "Data_wydania_licencji" Date NOT NULL
 )
-/
-
--- Create indexes for table Licencje
-
-CREATE INDEX "IX_Posiada_licencje" ON "Licencje" ("Nr_pracownika")
 /
 
 -- Add keys for table Licencje
 
-ALTER TABLE "Licencje" ADD CONSTRAINT "Nr_licencji" PRIMARY KEY ("Nr_licencji")
+ALTER TABLE "Licencje" ADD CONSTRAINT "Nr_licencji" PRIMARY KEY ("Nr_licencji","Nr_pracownika")
 /
 
 -- Table and Columns comments section
 
 COMMENT ON COLUMN "Licencje"."Nr_licencji" IS 'Numer id licencji'
 /
+COMMENT ON COLUMN "Licencje"."Nr_pracownika" IS 'Numer pracownika'
+/
 COMMENT ON COLUMN "Licencje"."Nazwa_licencji" IS 'Nazwa licencji'
 /
 COMMENT ON COLUMN "Licencje"."Numer_licencji" IS 'Numer licencji'
 /
 COMMENT ON COLUMN "Licencje"."Data_wydania_licencji" IS 'Data wydania licencji'
-/
-COMMENT ON COLUMN "Licencje"."Nr_pracownika" IS 'Numer pracownika'
 /
 
 -- Table Korty
@@ -197,8 +192,7 @@ COMMENT ON COLUMN "Klienci"."Nr_adresu" IS 'Numer adresu'
 CREATE TABLE "Obiekty"(
   "Nr_obiektu" Integer NOT NULL,
   "Nazwa" Varchar2(64 ) NOT NULL,
-  "Godzina_otwarcia" Date,
-  "Godzina_zamkniecia" Date,
+  "Godziny_otwarcia" Varchar2(50 ),
   "Konto_bankowe" Varchar2(40 ),
   "Nr_klubu" Integer NOT NULL,
   "Nr_adresu" Integer
@@ -224,9 +218,7 @@ COMMENT ON COLUMN "Obiekty"."Nr_obiektu" IS 'Numer obiektu'
 /
 COMMENT ON COLUMN "Obiekty"."Nazwa" IS 'Nazwa obiektu'
 /
-COMMENT ON COLUMN "Obiekty"."Godzina_otwarcia" IS 'Godzina otwarcia'
-/
-COMMENT ON COLUMN "Obiekty"."Godzina_zamkniecia" IS 'Godzina zamkniecia'
+COMMENT ON COLUMN "Obiekty"."Godziny_otwarcia" IS 'Godzina otwarcia'
 /
 COMMENT ON COLUMN "Obiekty"."Konto_bankowe" IS 'Konto bankowe obiektu'
 /
@@ -239,8 +231,7 @@ COMMENT ON COLUMN "Obiekty"."Nr_adresu" IS 'Numer adresu'
 
 CREATE TABLE "Wypozyczalnie"(
   "Nr_wypozyczalni" Integer NOT NULL,
-  "Godzina_otwarcia" Date,
-  "Godzina_zamkniecia" Date,
+  "Godziny_otwarcia" Varchar2(50 ),
   "Telefon" Varchar2(20 ) NOT NULL,
   "Adres_email" Varchar2(30 ),
   "Nr_obiektu" Integer NOT NULL
@@ -261,9 +252,7 @@ ALTER TABLE "Wypozyczalnie" ADD CONSTRAINT "Nr_wypozyczalni" PRIMARY KEY ("Nr_wy
 
 COMMENT ON COLUMN "Wypozyczalnie"."Nr_wypozyczalni" IS 'Numer wypozyczalni'
 /
-COMMENT ON COLUMN "Wypozyczalnie"."Godzina_otwarcia" IS 'Godzina otwarcia'
-/
-COMMENT ON COLUMN "Wypozyczalnie"."Godzina_zamkniecia" IS 'Godzina zakonczenia'
+COMMENT ON COLUMN "Wypozyczalnie"."Godziny_otwarcia" IS 'Godzina otwarcia'
 /
 COMMENT ON COLUMN "Wypozyczalnie"."Telefon" IS 'Telefon'
 /
@@ -364,23 +353,24 @@ COMMENT ON COLUMN "Pileczki"."Nr_producenta" IS 'Numer producenta'
 -- Table Karty_klubowe
 
 CREATE TABLE "Karty_klubowe"(
-  "Nr_karty_klubowej" Integer NOT NULL,
+  "Nr_klubu" Integer NOT NULL,
+  "Nr_klienta" Integer NOT NULL,
   "Data_wydania" Date NOT NULL,
   "Data_waznosci" Date NOT NULL,
-  "Znizka" Float(126) NOT NULL,
-  "Nr_klubu" Integer NOT NULL,
-  "Nr_klienta" Integer NOT NULL
+  "Znizka" Float(126) NOT NULL
 )
 /
 
 -- Add keys for table Karty_klubowe
 
-ALTER TABLE "Karty_klubowe" ADD CONSTRAINT "Nr_karty_klubowej" PRIMARY KEY ("Nr_karty_klubowej","Nr_klienta","Nr_klubu")
+ALTER TABLE "Karty_klubowe" ADD CONSTRAINT "Nr_karty_klubowej" PRIMARY KEY ("Nr_klienta","Nr_klubu")
 /
 
 -- Table and Columns comments section
 
-COMMENT ON COLUMN "Karty_klubowe"."Nr_karty_klubowej" IS 'Numer karty klubowej'
+COMMENT ON COLUMN "Karty_klubowe"."Nr_klubu" IS 'Numer klubu'
+/
+COMMENT ON COLUMN "Karty_klubowe"."Nr_klienta" IS 'Numer klienta'
 /
 COMMENT ON COLUMN "Karty_klubowe"."Data_wydania" IS 'Data wydania karty'
 /
@@ -388,17 +378,12 @@ COMMENT ON COLUMN "Karty_klubowe"."Data_waznosci" IS 'Data waznosci karty'
 /
 COMMENT ON COLUMN "Karty_klubowe"."Znizka" IS 'Znizka'
 /
-COMMENT ON COLUMN "Karty_klubowe"."Nr_klubu" IS 'Numer klubu'
-/
-COMMENT ON COLUMN "Karty_klubowe"."Nr_klienta" IS 'Numer klienta'
-/
 
 -- Table Producenci
 
 CREATE TABLE "Producenci"(
   "Nr_producenta" Integer NOT NULL,
   "Nazwa_producenta" Varchar2(30 ) NOT NULL,
-  "Numer_telefonu" Varchar2(15 ),
   "Adres_strony_internetowej" Varchar2(30 ),
   "Nr_adresu" Integer
 )
@@ -420,8 +405,6 @@ COMMENT ON COLUMN "Producenci"."Nr_producenta" IS 'Numer producenta'
 /
 COMMENT ON COLUMN "Producenci"."Nazwa_producenta" IS 'Nazwa producenta'
 /
-COMMENT ON COLUMN "Producenci"."Numer_telefonu" IS 'Numer telefonu'
-/
 COMMENT ON COLUMN "Producenci"."Adres_strony_internetowej" IS 'Adres strony internetowej'
 /
 COMMENT ON COLUMN "Producenci"."Nr_adresu" IS 'Numer adresu'
@@ -430,22 +413,31 @@ COMMENT ON COLUMN "Producenci"."Nr_adresu" IS 'Numer adresu'
 -- Table Wynajecia
 
 CREATE TABLE "Wynajecia"(
-  "Nr_klienta" Integer NOT NULL,
-  "Nr_kortu" Integer NOT NULL,
+  "Nr_wynajecia" Integer NOT NULL,
   "Data_rozpoczecia" Date,
-  "Data_zakonczenia" Date
+  "Data_zakonczenia" Date,
+  "Nr_klienta" Integer NOT NULL,
+  "Nr_kortu" Integer NOT NULL
 )
+/
+
+-- Create indexes for table Wynajecia
+
+CREATE INDEX "IX_Wynajmuje" ON "Wynajecia" ("Nr_klienta")
+/
+
+CREATE INDEX "IX_Jest_wynajmowany" ON "Wynajecia" ("Nr_kortu")
 /
 
 -- Table and Columns comments section
 
-COMMENT ON COLUMN "Wynajecia"."Nr_klienta" IS 'Numer klienta'
-/
-COMMENT ON COLUMN "Wynajecia"."Nr_kortu" IS 'Numer kortu'
-/
 COMMENT ON COLUMN "Wynajecia"."Data_rozpoczecia" IS 'Data rozpoczecia'
 /
 COMMENT ON COLUMN "Wynajecia"."Data_zakonczenia" IS 'Data zakonczenia'
+/
+COMMENT ON COLUMN "Wynajecia"."Nr_klienta" IS 'Numer klienta'
+/
+COMMENT ON COLUMN "Wynajecia"."Nr_kortu" IS 'Numer kortu'
 /
 
 -- Table Zatrudnienia
@@ -453,17 +445,17 @@ COMMENT ON COLUMN "Wynajecia"."Data_zakonczenia" IS 'Data zakonczenia'
 CREATE TABLE "Zatrudnienia"(
   "Nr_zatrudnienia" Integer NOT NULL,
   "Nr_pracownika" Integer NOT NULL,
-  "Nr_obiektu" Integer,
-  "Nr_klubu" Integer,
   "Data_zatrudnienia" Date NOT NULL,
   "Stanowisko" Varchar2(30 ) NOT NULL,
-  "Wynagrodzenie" Float
+  "Wynagrodzenie" Float,
+  "Nr_obiektu" Integer,
+  "Nr_klubu" Integer
 )
 /
 
 -- Create indexes for table Zatrudnienia
 
-CREATE INDEX "IX_Relationship3" ON "Zatrudnienia" ("Nr_klubu")
+CREATE INDEX "IX_Relationship15" ON "Zatrudnienia" ("Nr_klubu")
 /
 
 CREATE INDEX "IX_Obiekt_zatrudnia" ON "Zatrudnienia" ("Nr_obiektu")
@@ -475,36 +467,43 @@ COMMENT ON COLUMN "Zatrudnienia"."Nr_zatrudnienia" IS 'Numer zatrudnienia'
 /
 COMMENT ON COLUMN "Zatrudnienia"."Nr_pracownika" IS 'Numer pracownika'
 /
-COMMENT ON COLUMN "Zatrudnienia"."Nr_obiektu" IS 'Numer obiektu'
-/
-COMMENT ON COLUMN "Zatrudnienia"."Nr_klubu" IS 'Numer klubu'
-/
 COMMENT ON COLUMN "Zatrudnienia"."Data_zatrudnienia" IS 'Data zatrudnienia'
 /
 COMMENT ON COLUMN "Zatrudnienia"."Stanowisko" IS 'Stanowisko'
 /
 COMMENT ON COLUMN "Zatrudnienia"."Wynagrodzenie" IS 'Wynagrodzenie'
 /
+COMMENT ON COLUMN "Zatrudnienia"."Nr_obiektu" IS 'Numer obiektu'
+/
+COMMENT ON COLUMN "Zatrudnienia"."Nr_klubu" IS 'Numer klubu'
+/
 
--- Table Wypozyczenia
+-- Table Wypozyczenia_rakiet
 
-CREATE TABLE "Wypozyczenia"(
-  "Nr_klienta" Integer NOT NULL,
-  "Nr_wypozyczalni" Integer NOT NULL,
+CREATE TABLE "Wypozyczenia_rakiet"(
+  "Nr_wypozyczenia" Integer NOT NULL,
   "Data_rozpoczecia" Date,
-  "Data_zakonczenia" Date
+  "Data_zakonczenia" Date,
+  "Nr_klienta" Integer NOT NULL,
+  "Nr_rakiety" Integer NOT NULL
 )
+/
+
+-- Create indexes for table Wypozyczenia_rakiet
+
+CREATE INDEX "IX_Wypozycza" ON "Wypozyczenia_rakiet" ("Nr_klienta")
+/
+
+CREATE INDEX "IX_Relationship2" ON "Wypozyczenia_rakiet" ("Nr_rakiety")
 /
 
 -- Table and Columns comments section
 
-COMMENT ON COLUMN "Wypozyczenia"."Nr_klienta" IS 'Numer klienta'
+COMMENT ON COLUMN "Wypozyczenia_rakiet"."Data_rozpoczecia" IS 'Data rozpoczecia'
 /
-COMMENT ON COLUMN "Wypozyczenia"."Nr_wypozyczalni" IS 'Numer wypozyczalni'
+COMMENT ON COLUMN "Wypozyczenia_rakiet"."Data_zakonczenia" IS 'Data zakonczenia'
 /
-COMMENT ON COLUMN "Wypozyczenia"."Data_rozpoczecia" IS 'Data rozpoczecia'
-/
-COMMENT ON COLUMN "Wypozyczenia"."Data_zakonczenia" IS 'Data zakonczenia'
+COMMENT ON COLUMN "Wypozyczenia_rakiet"."Nr_klienta" IS 'Numer klienta'
 /
 
 -- Table Adresy
@@ -513,7 +512,7 @@ CREATE TABLE "Adresy"(
   "Nr_adresu" Integer NOT NULL,
   "Telefon" Varchar2(30 ),
   "Email" Varchar2(30 ),
-  "Ulica" Varchar2(30 ),
+  "Ulica" Varchar2(50 ),
   "Kod_pocztowy" Varchar2(30 ),
   "Miasto" Varchar2(30 )
 )
@@ -537,6 +536,30 @@ COMMENT ON COLUMN "Adresy"."Ulica" IS 'Ulica'
 COMMENT ON COLUMN "Adresy"."Kod_pocztowy" IS 'Kod pocztowy'
 /
 COMMENT ON COLUMN "Adresy"."Miasto" IS 'Miasto'
+/
+
+-- Table Wypozyczenia_pileczek
+
+CREATE TABLE "Wypozyczenia_pileczek"(
+  "Nr_wypozyczenia" Integer NOT NULL,
+  "Data_rozpoczecia" Date,
+  "Data_zakonczenia" Date,
+  "Nr_klienta" Integer NOT NULL,
+  "Nr_pileczek" Integer NOT NULL
+)
+/
+
+-- Create indexes for table Wypozyczenia_pileczek
+
+CREATE INDEX "IX_Relationship3" ON "Wypozyczenia_pileczek" ("Nr_klienta")
+/
+
+CREATE INDEX "IX_Relationship4" ON "Wypozyczenia_pileczek" ("Nr_pileczek")
+/
+
+-- Add keys for table Wypozyczenia_pileczek
+
+ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "PK_Wypozyczenia_pileczek" PRIMARY KEY ("Nr_wypozyczenia")
 /
 
 
@@ -618,6 +641,21 @@ ALTER TABLE "Klienci" ADD CONSTRAINT "Adres_klienta" FOREIGN KEY ("Nr_adresu") R
 
 
 ALTER TABLE "Producenci" ADD CONSTRAINT "Adres_producenta" FOREIGN KEY ("Nr_adresu") REFERENCES "Adresy" ("Nr_adresu")
+/
+
+
+
+ALTER TABLE "Wypozyczenia_rakiet" ADD CONSTRAINT "Rakieta_jest_wypozyczana" FOREIGN KEY ("Nr_rakiety") REFERENCES "Rakiety" ("Nr_rakiety")
+/
+
+
+
+ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "Wypozycza_pileczki" FOREIGN KEY ("Nr_klienta") REFERENCES "Klienci" ("Nr_klienta")
+/
+
+
+
+ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "Pileczki_sa_wypozyczane" FOREIGN KEY ("Nr_pileczek") REFERENCES "Pileczki" ("Nr_pileczek")
 /
 
 

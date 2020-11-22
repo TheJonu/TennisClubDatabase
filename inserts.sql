@@ -1,5 +1,5 @@
 --Adresy do klubow
-INSERT INTO "Adresy" VALUES (0, '689677315' NULL, 'Mylna 39', '60-857', 'Poznań');
+INSERT INTO "Adresy" VALUES (0, '689677315', NULL, 'Mylna 39', '60-857', 'Poznań');
 INSERT INTO "Adresy" VALUES (1, '532132555', NULL, 'Grzybowska 124', '41-808', 'Zabrze');
 INSERT INTO "Adresy" VALUES (2, '676520095', NULL, 'Majora Hubala 86', '15-174', 'Białystok');
 --Adresy do producentow
