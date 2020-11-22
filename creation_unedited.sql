@@ -562,18 +562,18 @@ CREATE INDEX "IX_Relationship4" ON "Wypozyczenia_pileczek" ("Nr_pileczek")
 ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "PK_Wypozyczenia_pileczek" PRIMARY KEY ("Nr_wypozyczenia")
 /
 
--- Table Poczta
+-- Table Poczty
 
-CREATE TABLE "Poczta"(
+CREATE TABLE "Poczty"(
   "Nr_poczty" Integer NOT NULL,
   "Kod_pocztowy" Varchar2(30 ) NOT NULL,
-  "Miejscowość" Varchar2(30 ) NOT NULL
+  "Miejscowosc" Varchar2(30 ) NOT NULL
 )
 /
 
--- Add keys for table Poczta
+-- Add keys for table Poczty
 
-ALTER TABLE "Poczta" ADD CONSTRAINT "PK_Poczta" PRIMARY KEY ("Nr_poczty")
+ALTER TABLE "Poczty" ADD CONSTRAINT "PK_Poczty" PRIMARY KEY ("Nr_poczty")
 /
 
 
@@ -674,7 +674,7 @@ ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "Pileczki_sa_wypozyczane" FOR
 
 
 
-ALTER TABLE "Adresy" ADD CONSTRAINT "Ma_poczte" FOREIGN KEY ("Nr_poczty") REFERENCES "Poczta" ("Nr_poczty")
+ALTER TABLE "Adresy" ADD CONSTRAINT "Ma_poczte" FOREIGN KEY ("Nr_poczty") REFERENCES "Poczty" ("Nr_poczty")
 /
 
 
