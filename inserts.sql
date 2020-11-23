@@ -36,6 +36,18 @@ INSERT INTO "Obiekty" VALUES (2, 'Pukam Grzybowska', NULL, NULL, NULL, 1, 1);
 INSERT INTO "Obiekty" VALUES (3, 'Match Point Białystok', NULL, NULL, NULL, 2, 2);
 INSERT INTO "Obiekty" VALUES (4, 'MP Szkółka', NULL, NULL, NULL, 2, 19);
 
+--Korty
+INSERT INTO "Korty" VALUES (0, 'maczka ceglana', 'N', NULL, 0)
+INSERT INTO "Korty" VALUES (1, 'maczka ceglana', 'N', NULL, 0)
+INSERT INTO "Korty" VALUES (2, 'sztuczna trawa', 'T', NULL, 1)
+INSERT INTO "Korty" VALUES (3, 'sztuczna trawa', 'N', 'T', 2)
+INSERT INTO "Korty" VALUES (4, 'maczka ceglana', 'T', 'N', 3)
+INSERT INTO "Korty" VALUES (5, 'maczka ceglana', 'N', 'N', 4)
+
+--Wypozyczalnie
+INSERT INTO "Wypozyczalnie" VALUES (0, NULL, '666184634', NULL, 0)
+INSERT INTO "Wypozyczalnie" VALUES (1, "pn-pt 10:00-16:00", "173987537", "wypozyczalnia@pukam.com", 2)
+
 --Producenci
 INSERT INTO "Producenci" VALUES (0, 'Babolat', 'babolat-tenis.pl', 3);
 INSERT INTO "Producenci" VALUES (1, 'Head', 'head.com', 4);
@@ -43,6 +55,16 @@ INSERT INTO "Producenci" VALUES (2, 'Wilson', 'wilsontenis.pl', 5);
 INSERT INTO "Producenci" VALUES (3, 'Dunlop', 'dunlopsport.pl', 6);
 INSERT INTO "Producenci" VALUES (4, 'Tecnifibre', 'tecnifibre.com', 7);
 
+--Rakiety
+INSERT INTO "Rakiety" VALUES (0, NULL, NULL, NULL, NULL, NULL, 0, 1)
+INSERT INTO "Rakiety" VALUES (1, NULL, NULL, NULL, NULL, NULL, 0, 4)
+INSERT INTO "Rakiety" VALUES (2, NULL, NULL, NULL, NULL, NULL, 1, 0)
+INSERT INTO "Rakiety" VALUES (2, NULL, NULL, NULL, NULL, NULL, 1, 2)
+
+--Pileczki
+INSERT INTO "Pileczki" VALUES (0, NULL, NULL, 0, 1)
+INSERT INTO "Pileczki" VALUES (0, NULL, NULL, 0, 1)
+INSERT INTO "Pileczki" VALUES (0, NULL, NULL, 1, 2)
 
 --Klienci
 INSERT INTO "Klienci" VALUES (0, 'Ruta', 'Szczepańska', '1947-05-19', 4);
@@ -51,4 +73,5 @@ INSERT INTO "Klienci" VALUES (2, 'Mikołaj', 'Nowakowski', '1939-12-03', 2);
 
 --Pracownicy
 INSERT INTO "Pracownicy" VALUES (0, 'Świętosław', 'Wieczorek', '1985-05-01', '85050172453', 'M', 1);
+INSERT INTO "Pracownicy" VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 0);
 INSERT INTO "Pracownicy" VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 0);
