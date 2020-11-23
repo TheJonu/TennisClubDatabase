@@ -1,5 +1,5 @@
 --Adresy do klubow
-INSERT INTO "Adresy" VALUES (0, '689677315', NULL, 'Mylna 39', '60-857', 'Poznań');
+INSERT INTO "Adresy" (Telefon, Ulica, Kod_pocztowy, Miejscowosc) VALUES ('689677315', 'Mylna 39', '60-857', 'Poznań');
 INSERT INTO "Adresy" VALUES (1, '532132555', NULL, 'Grzybowska 124', '41-808', 'Zabrze');
 INSERT INTO "Adresy" VALUES (2, '676520095', NULL, 'Majora Hubala 86', '15-174', 'Białystok');
 --Adresy do producentow
@@ -37,12 +37,12 @@ INSERT INTO "Obiekty" VALUES (3, 'Match Point Białystok', NULL, NULL, NULL, 2, 
 INSERT INTO "Obiekty" VALUES (4, 'MP Szkółka', NULL, NULL, NULL, 2, 19);
 
 --Korty
-INSERT INTO "Korty" VALUES (0, 'maczka ceglana', 'N', NULL, 0)
-INSERT INTO "Korty" VALUES (1, 'maczka ceglana', 'N', NULL, 0)
+INSERT INTO "Korty" VALUES (0, 'mączka ceglana', 'N', NULL, 0)
+INSERT INTO "Korty" VALUES (1, 'mączka ceglana', 'N', NULL, 0)
 INSERT INTO "Korty" VALUES (2, 'sztuczna trawa', 'T', NULL, 1)
 INSERT INTO "Korty" VALUES (3, 'sztuczna trawa', 'N', 'T', 2)
-INSERT INTO "Korty" VALUES (4, 'maczka ceglana', 'T', 'N', 3)
-INSERT INTO "Korty" VALUES (5, 'maczka ceglana', 'N', 'N', 4)
+INSERT INTO "Korty" VALUES (4, 'mączka ceglana', 'T', 'N', 3)
+INSERT INTO "Korty" VALUES (5, 'mączka ceglana', 'N', 'N', 4)
 
 --Wypozyczalnie
 INSERT INTO "Wypozyczalnie" VALUES (0, NULL, '666184634', NULL, 0)
@@ -71,7 +71,18 @@ INSERT INTO "Klienci" VALUES (0, 'Ruta', 'Szczepańska', '1947-05-19', 4);
 INSERT INTO "Klienci" VALUES (1, 'Narcyz', 'Adamczyk', '1970-09-31', 3);
 INSERT INTO "Klienci" VALUES (2, 'Mikołaj', 'Nowakowski', '1939-12-03', 2);
 
+--Karty klubowe
+INSERT INTO "Karty_klubowe" VALUES (0, 0, '2020-03-21', '2023-03-21', 5.0);
+INSERT INTO "Karty_klubowe" VALUES (0, 1, '2019-09-12', '2022-09-12', 5.0);
+INSERT INTO "Karty_klubowe" VALUES (1, 1, '2016-11-13', '2026-11-13', 10.0);
+INSERT INTO "Karty_klubowe" VALUES (2, 2, '2018-12-20', '2020-12-20', 7.5);
+
 --Pracownicy
 INSERT INTO "Pracownicy" VALUES (0, 'Świętosław', 'Wieczorek', '1985-05-01', '85050172453', 'M', 1);
 INSERT INTO "Pracownicy" VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 0);
 INSERT INTO "Pracownicy" VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 0);
+
+--Licencje
+INSERT INTO "Licencje" VALUES (0, 0, 'Licencja Klubowa Jukan', '13/2005/Jn', '2005-10-03');
+INSERT INTO "Licencje" VALUES (1, 0, 'Licencja UKS', 'PZT/LK/224/2010/DO', '2010-03-15');
+INSERT INTO "Licencje" VALUES (2, 1, 'Licencja PZT', 'PZT/LK/13/2016/DO', '2016-04-19');
