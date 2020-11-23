@@ -1,6 +1,6 @@
 ﻿/*
 Created: 11.11.2020
-Modified: 22.11.2020
+Modified: 23.11.2020
 Project: Klub Tenisowy
 Model: Model logiczny
 Company: EiTI PW
@@ -513,13 +513,9 @@ CREATE TABLE "Adresy"(
   "Telefon" Varchar2(30 ),
   "Email" Varchar2(30 ),
   "Ulica" Varchar2(50 ),
-  "Nr_poczty" Integer
+  "Kod_pocztowy" Varchar2(15 ),
+  "Miejscowosc" Varchar2(40 )
 )
-/
-
--- Create indexes for table Adresy
-
-CREATE INDEX "IX_Relationship5" ON "Adresy" ("Nr_poczty")
 /
 
 -- Add keys for table Adresy
@@ -560,20 +556,6 @@ CREATE INDEX "IX_Relationship4" ON "Wypozyczenia_pileczek" ("Nr_pileczek")
 -- Add keys for table Wypozyczenia_pileczek
 
 ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "PK_Wypozyczenia_pileczek" PRIMARY KEY ("Nr_wypozyczenia")
-/
-
--- Table Poczty
-
-CREATE TABLE "Poczty"(
-  "Nr_poczty" Integer NOT NULL,
-  "Kod_pocztowy" Varchar2(30 ) NOT NULL,
-  "Miejscowosc" Varchar2(30 ) NOT NULL
-)
-/
-
--- Add keys for table Poczty
-
-ALTER TABLE "Poczty" ADD CONSTRAINT "PK_Poczty" PRIMARY KEY ("Nr_poczty")
 /
 
 
@@ -670,11 +652,6 @@ ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "Wypozycza_pileczki" FOREIGN 
 
 
 ALTER TABLE "Wypozyczenia_pileczek" ADD CONSTRAINT "Pileczki_sa_wypozyczane" FOREIGN KEY ("Nr_pileczek") REFERENCES "Pileczki" ("Nr_pileczek")
-/
-
-
-
-ALTER TABLE "Adresy" ADD CONSTRAINT "Ma_poczte" FOREIGN KEY ("Nr_poczty") REFERENCES "Poczty" ("Nr_poczty")
 /
 
 
