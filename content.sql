@@ -93,3 +93,18 @@ INSERT INTO Zatrudnienia (Nr_zatrudnienia, Nr_pracownika, Data_zatrudnienia, Sta
 INSERT INTO Zatrudnienia (Nr_zatrudnienia, Nr_pracownika, Data_zatrudnienia, Stanowisko, Nr_obiektu) VALUES (1, 1, '2018-02-10', 'Trener', 2);
 INSERT INTO Zatrudnienia (Nr_zatrudnienia, Nr_pracownika, Data_zatrudnienia, Stanowisko, Nr_obiektu) VALUES (2, 2, '2019-08-03', 'Trener', 4);
 INSERT INTO Zatrudnienia (Nr_zatrudnienia, Nr_pracownika, Data_zatrudnienia, Stanowisko, Nr_klubu) VALUES (3, 3, '2020-03-12', 'Administrator', 0); 
+
+-- Wynajecia
+INSERT INTO Wynajecia (Nr_klienta, Nr_kortu, Data_wynajecia) VALUES (0, 0, '2020-05-08');
+INSERT INTO Wynajecia (Nr_klienta, Nr_kortu, Data_wynajecia) VALUES (1, 2, '2020-05-12');
+INSERT INTO Wynajecia (Nr_klienta, Nr_kortu, Data_wynajecia) VALUES (2, 4, '2020-05-17');
+INSERT INTO Wynajecia (Nr_klienta, Nr_kortu, Data_wynajecia) VALUES (0, 1, '2020-05-27');
+INSERT INTO Wynajecia (Nr_klienta, Nr_kortu, Data_wynajecia) VALUES (1, 2, '2020-06-06');
+
+-- Wypozyczenia rakiet
+INSERT INTO Wypozyczenia_rakiet (Nr_klienta, Nr_rakiety, Data_wypozyczenia) VALUES (0, 1, '2020-05-08');
+INSERT INTO Wypozyczenia_rakiet (Nr_klienta, Nr_rakiety, Data_wypozyczenia) VALUES (1, 2, '2020-05-12');
+INSERT INTO Wypozyczenia_rakiet (Nr_klienta, Nr_rakiety, Data_wypozyczenia) VALUES (2, 3, '2020-05-17');
+
+-- Wypozyczenia pileczek
+INSERT INTO Wypozyczenia_pileczek (Nr_klienta, Nr_pileczek, Data_wypozyczenia) VALUES (0, 0, '2020-05-08');
