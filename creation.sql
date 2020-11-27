@@ -1,6 +1,6 @@
 ﻿/*
 Created: 11.11.2020
-Modified: 23.11.2020
+Modified: 27.11.2020
 Project: Klub Tenisowy
 Model: Model logiczny
 Company: EiTI PW
@@ -414,8 +414,7 @@ COMMENT ON COLUMN Producenci.Nr_adresu IS 'Numer adresu'
 
 CREATE TABLE Wynajecia(
   Nr_wynajecia Integer NOT NULL,
-  Data_rozpoczecia Date,
-  Data_zakonczenia Date,
+  Data_wynajecia Date,
   Nr_klienta Integer NOT NULL,
   Nr_kortu Integer NOT NULL
 )
@@ -431,9 +430,7 @@ CREATE INDEX IX_Jest_wynajmowany ON Wynajecia (Nr_kortu)
 
 -- Table and Columns comments section
 
-COMMENT ON COLUMN Wynajecia.Data_rozpoczecia IS 'Data rozpoczecia'
-/
-COMMENT ON COLUMN Wynajecia.Data_zakonczenia IS 'Data zakonczenia'
+COMMENT ON COLUMN Wynajecia.Data_wynajecia IS 'Data rozpoczecia'
 /
 COMMENT ON COLUMN Wynajecia.Nr_klienta IS 'Numer klienta'
 /
@@ -482,8 +479,7 @@ COMMENT ON COLUMN Zatrudnienia.Nr_klubu IS 'Numer klubu'
 
 CREATE TABLE Wypozyczenia_rakiet(
   Nr_wypozyczenia Integer NOT NULL,
-  Data_rozpoczecia Date,
-  Data_zakonczenia Date,
+  Data_wypozyczenia Date,
   Nr_klienta Integer NOT NULL,
   Nr_rakiety Integer NOT NULL
 )
@@ -499,9 +495,7 @@ CREATE INDEX IX_Relationship2 ON Wypozyczenia_rakiet (Nr_rakiety)
 
 -- Table and Columns comments section
 
-COMMENT ON COLUMN Wypozyczenia_rakiet.Data_rozpoczecia IS 'Data rozpoczecia'
-/
-COMMENT ON COLUMN Wypozyczenia_rakiet.Data_zakonczenia IS 'Data zakonczenia'
+COMMENT ON COLUMN Wypozyczenia_rakiet.Data_wypozyczenia IS 'Data rozpoczecia'
 /
 COMMENT ON COLUMN Wypozyczenia_rakiet.Nr_klienta IS 'Numer klienta'
 /
@@ -538,8 +532,7 @@ COMMENT ON COLUMN Adresy.Ulica IS 'Ulica'
 
 CREATE TABLE Wypozyczenia_pileczek(
   Nr_wypozyczenia Integer NOT NULL,
-  Data_rozpoczecia Date,
-  Data_zakonczenia Date,
+  Data_wypozyczenia Date,
   Nr_klienta Integer NOT NULL,
   Nr_pileczek Integer NOT NULL
 )
