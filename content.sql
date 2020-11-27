@@ -8,14 +8,14 @@ INSERT INTO Adresy VALUES (4, '884977339', NULL, 'Małopolska 140', '60-619', 'P
 INSERT INTO Adresy VALUES (5, '176847619', NULL, 'Ametystowa 92', '91-604', 'Łódź');
 INSERT INTO Adresy VALUES (6, '512547579', NULL, 'Zakopiańska 88', '30-450', 'Kraków');
 INSERT INTO Adresy VALUES (7, '457057430', NULL, 'Pawlikowskiej Jasnorzewskiej Marii 19', '71-148', 'Szczecin');
---Adresy do klientow (do wpisania emaile od imion
-INSERT INTO Adresy VALUES (8, '161025109', '', 'Lenartowicza Teofila 7', '31-138', 'Kraków');
-INSERT INTO Adresy VALUES (9, '252752956', '', 'Gliwicka 19', '41-902', 'Bytom');
-INSERT INTO Adresy VALUES (10, '262440566', '', 'Miarki Karola 31', '44-330', 'Jastrzębie-Zdrój');
-INSERT INTO Adresy VALUES (11, '951057219', '', 'Makuszyńskiego Kornela 100', '71-155', 'Szczecin');
-INSERT INTO Adresy VALUES (12, '556159236', '', 'Generała Hallera Józefa 121', '41-214', 'Sosnowiec');
-INSERT INTO Adresy VALUES (13, '373693248', '', 'Domeyki Ignacego 38', '40-749', 'Katowice');
-INSERT INTO Adresy VALUES (14, '186210922', '', 'Rybaki 12', '31-067', 'Kraków');
+--Adresy do klientow i pracownikow
+INSERT INTO Adresy VALUES (8, '161025109', 'rszczep@gmail.com', 'Lenartowicza Teofila 7', '31-138', 'Kraków');
+INSERT INTO Adresy VALUES (9, '252752956', 'narcyzek70@wp.pl', 'Gliwicka 19', '41-902', 'Bytom');
+INSERT INTO Adresy VALUES (10, '262440566', 'm.nowakowski@gmail.com', 'Miarki Karola 31', '44-330', 'Jastrzębie-Zdrój');
+INSERT INTO Adresy VALUES (11, '951057219', 'swietosla.wieczorek1@o2.pl', 'Makuszyńskiego Kornela 100', '71-155', 'Szczecin');
+INSERT INTO Adresy VALUES (12, '556159236', 'getruda.k@wp.pl', 'Generała Hallera Józefa 121', '41-214', 'Sosnowiec');
+INSERT INTO Adresy VALUES (13, '373693248', 'konstekpodarek@gmail.com', 'Domeyki Ignacego 38', '40-749', 'Katowice');
+INSERT INTO Adresy VALUES (14, '186210922', 'albina.potok@shemale.com', 'Rybaki 12', '31-067', 'Kraków');
 INSERT INTO Adresy VALUES (15, '443437989', '', 'Lea Juliusza 26', '30-133', 'Kraków');
 INSERT INTO Adresy VALUES (16, '402101102', '', 'Borówkowa 94', '71-034', 'Szczecin');
 INSERT INTO Adresy VALUES (17, '799997965', '', 'Łódzka 116', '60-468', 'Poznań');
@@ -67,9 +67,9 @@ INSERT INTO Pileczki VALUES (1, NULL, NULL, 0, 1);
 INSERT INTO Pileczki VALUES (2, NULL, NULL, 1, 2);
 
 --Klienci
-INSERT INTO Klienci VALUES (0, 'Ruta', 'Szczepańska', '1947-05-19', 4);
-INSERT INTO Klienci VALUES (1, 'Narcyz', 'Adamczyk', '1970-09-30', 3);
-INSERT INTO Klienci VALUES (2, 'Mikołaj', 'Nowakowski', '1939-12-03', 2);
+INSERT INTO Klienci VALUES (0, 'Ruta', 'Szczepańska', '1947-05-19', 8);
+INSERT INTO Klienci VALUES (1, 'Narcyz', 'Adamczyk', '1970-09-30', 9);
+INSERT INTO Klienci VALUES (2, 'Mikołaj', 'Nowakowski', '1939-12-03', 10);
 
 --Karty klubowe
 INSERT INTO Karty_klubowe VALUES (0, 0, '2020-03-21', '2023-03-21', 5.0);
@@ -78,10 +78,10 @@ INSERT INTO Karty_klubowe VALUES (1, 1, '2016-11-13', '2026-11-13', 10.0);
 INSERT INTO Karty_klubowe VALUES (2, 2, '2018-12-20', '2020-12-20', 7.5);
 
 --Pracownicy
-INSERT INTO Pracownicy VALUES (0, 'Świętosław', 'Wieczorek', '1985-05-01', '85050172453', 'M', 1);
-INSERT INTO Pracownicy VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 6);
-INSERT INTO Pracownicy VALUES (2, 'Konstanty', 'Podarek', '1989-12-04', '89731836472', 'M', 9);
-INSERT INTO Pracownicy VALUES (3, 'Albina', 'Potokowicz', '1992-01-07', '92473518637', 'K', 16);
+INSERT INTO Pracownicy VALUES (0, 'Świętosław', 'Wieczorek', '1985-05-01', '85050172453', 'M', 11);
+INSERT INTO Pracownicy VALUES (1, 'Gertruda', 'Król', '1970-09-14', '70091470307', 'K', 12);
+INSERT INTO Pracownicy VALUES (2, 'Konstanty', 'Podarek', '1989-12-04', '89731836472', 'M', 13);
+INSERT INTO Pracownicy VALUES (3, 'Albina', 'Potokowicz', '1992-01-07', '92473518637', 'K', 14);
 
 --Licencje
 INSERT INTO Licencje VALUES (0, 0, 'Licencja Klubowa Jukan', '13/2005/Jn', '2005-10-03');
